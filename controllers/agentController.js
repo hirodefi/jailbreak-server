@@ -36,7 +36,7 @@ exports.createAgent = async (req, res, next) => {
             winnerPrize: winnerPrize
         };
         await agentService.createAgent(agent);
-        const responseBody = new ResponseBody("Agent successfully created", false, { agentId: agentIdHex, taskHash, tokenAmount: tokenAmountWei, agentTime: agentTime });
+        const responseBody = new ResponseBody("Agent successfully created", false, { agentId: agentIdHex, taskHash, tokenAmount: tokenAmountWei, agentTime: agentTime, winnerPrize });
         responseHandler(res, next, responseBody, 201);
     } catch (error) {
         next(error);

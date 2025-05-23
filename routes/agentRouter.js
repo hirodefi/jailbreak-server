@@ -30,7 +30,7 @@ const agentPublicQueryValidator = [
 ];
 
 
-router.post("/admin", verifyAdmin, createAgentValidator, agentController.createAgent);
+router.post("/admin", createAgentValidator, agentController.createAgent);
 
 router.get("/admin/all", verifyAdmin, agentsQueryValidator, agentController.getAgents);
 

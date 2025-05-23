@@ -498,6 +498,9 @@ async function subscribeAgentCreated() {
             let taskHash = data.returnValues['1'];
             let startTime = data.returnValues['2'];
             let maxEndTime = data.returnValues['3'];
+            let winnerPrize = data.returnValues['4'];
+
+            winnerPrize = Number(Web3.utils.fromWei(winnerPrize, 'ether'));
 
             agentId = Web3.utils.hexToNumber(agentId);
             startTime = parseInt(startTime);
@@ -505,7 +508,7 @@ async function subscribeAgentCreated() {
 
             console.log("EVENT EMITTED : Agent Created", agentId);
             try {
-                await agentService.findAgentAndUpdate({ agentId: agentId, isCreated: false, taskHash: taskHash }, { isCreated: true, startTime: startTime, maxEndTime: maxEndTime });
+                await agentService.findAgentAndUpdate({ agentId: agentId, isCreated: false, taskHash: taskHash, winnerPrize: winnerPrize }, { isCreated: true, startTime: startTime, maxEndTime: maxEndTime });
             } catch (error) {
                 console.log(error);
             }
