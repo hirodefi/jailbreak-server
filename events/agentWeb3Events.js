@@ -18,6 +18,21 @@ const abi = [
                 "internalType": "address",
                 "name": "_airdrop",
                 "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_feeVault",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_agentFee",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_platformFee",
+                "type": "uint256"
             }
         ],
         "stateMutability": "nonpayable",
@@ -100,6 +115,12 @@ const abi = [
                 "indexed": false,
                 "internalType": "uint256",
                 "name": "maxEndTime",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "prizeAmount",
                 "type": "uint256"
             }
         ],
@@ -199,6 +220,19 @@ const abi = [
         "type": "fallback"
     },
     {
+        "inputs": [],
+        "name": "agentFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "bytes32",
@@ -281,6 +315,24 @@ const abi = [
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "_agentFee",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_platformFee",
+                "type": "uint256"
+            }
+        ],
+        "name": "changeFee",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "bytes32",
                 "name": "_agentId",
                 "type": "bytes32"
@@ -317,11 +369,29 @@ const abi = [
                 "internalType": "uint256",
                 "name": "_agentTime",
                 "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_prizeAmount",
+                "type": "uint256"
             }
         ],
         "name": "createAgent",
         "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "feeVault",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -362,6 +432,19 @@ const abi = [
     },
     {
         "inputs": [],
+        "name": "platformFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "renounceOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
@@ -392,7 +475,6 @@ const abi = [
         "type": "receive"
     }
 ]
-
 
 var options = {
     timeout: 30000, // ms
